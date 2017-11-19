@@ -8,7 +8,7 @@ from . import library
 
 @cooldown(timedelta(seconds=15), 'commands', 'moderator')
 async def commandCommands(args: ChatCommandArgs) -> bool:
-    if await args.database.getChatProperty(args.chat.channel, 'noCommandList'):
+    if await args.data.getChatProperty(args.chat.channel, 'noCommandList'):
         return False
 
     return library.botCommands(args.chat.channel, send(args.chat))

@@ -10,7 +10,7 @@ async def manageNoCommand(args: ManageBotArgs) -> bool:
     if len(args.message) < 4:
         return False
     if args.message.lower[2] in ['add', 'insert']:
-        if await args.database.setChatProperty(
+        if await args.data.setChatProperty(
                 args.message.lower[3], 'noCommandList', '1'):
             args.send('The !commands has been disabled for '
                       + args.message.lower[3])
@@ -19,7 +19,7 @@ async def manageNoCommand(args: ManageBotArgs) -> bool:
                       + args.message.lower[3] + '.')
         return True
     if args.message.lower[2] in ['del', 'delete', 'rem', 'remove', 'remove']:
-        if await args.database.setChatProperty(
+        if await args.data.setChatProperty(
                 args.message.lower[3], 'noCommandList'):
             args.send('The !commands has been enabled for '
                       + args.message.lower[3])
